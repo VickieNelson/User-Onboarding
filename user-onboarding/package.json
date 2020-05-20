@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-schema-form": "^0.8.7",
     "react-scripts": "3.4.1",
     "yup": "^0.29.0"
   },
