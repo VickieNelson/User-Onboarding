@@ -40,9 +40,14 @@ export default function UserForm(props) {
 
 {
   //form closed / return closed / function closed}
-  // {/* STEP 2 implement form validation
+
+  // from ReadMe
+
+  {
+    /* STEP 2 implement form validation
   //     Using Yup, set up at least two different validations along with custom error messages that will display on screen when validation fails.
-  // */}
+  // */
+  }
   // {/* STEP 3 make post request
   //     >> Craft a POST request using axios that sends your form data to the following endpoint: https://reqres.in/api/users
   //     >>Verify using a console.log() that you are receiving a successful response back

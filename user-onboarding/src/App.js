@@ -59,14 +59,14 @@ export default function App() {
   };
 
   const postNewUser = (newUser) => {
-    // ON SUCCESS ADD NEWLY CREATED FRIEND TO STATE
-    //    helper to POST `newFriend` to `https://reqres.in/api/users`
+    // ON SUCCESS ADD NEW User TO STATE
+    //    helper to POST `newUser` to `https://reqres.in/api/users`
     //    and regardless of success or failure, the form should reset
     axios
       .post("https://reqres.in/api/users", newUser)
       .then((res) => {
         setUsers([res.data, ...users]);
-        // getFriends() // the price of triggering a new 'getFriends`
+        // getUsers() // the price of triggering a new 'getUsers`
       })
       .catch((err) => {
         debugger;
@@ -77,22 +77,23 @@ export default function App() {
   };
 
   //////////////// EVENT HANDLERS ////////////////
-  //////////////// EVENT HANDLERS ////////////////
-  //////////////// EVENT HANDLERS ////////////////
+
   const onInputChange = (evt) => {
-    const name = evt.target.name;
+    const first_name = evt.target.first_name;
+    const last_name = evt.target.last_name;
+
     const value = evt.target.value;
 
-    // 🔥 STEP 12- RUN VALIDATION WITH YUP
+    // VALIDATION WITH YUP
     yup
-      .reach(formSchema, name)
+      .reach(formSchema, first_name)
       // we can then run validate using the value
       .validate(value)
       .then((valid) => {
         // happy path, we can clear the error message
         setFormErrors({
           ...formErrors,
-          [name]: "",
+          [first_name]: "",
         });
       })
       .catch((err) => {
@@ -100,21 +101,21 @@ export default function App() {
         // returned from yup (that we created in our schema)
         setFormErrors({
           ...formErrors,
-          [name]: err.errors[0],
+          [first_name]: err.errors[0],
         });
       });
 
-    // Wether or not our validation was successful, we will still set the state to the new value as the user is typing
+    // Wether or not our validation was successful, set the state to the new value as the user is typing
     setFormValues({
       ...formValues,
-      [name]: value, // NOT AN ARRAY
+      [first_name]: value, // NOT AN ARRAY
     });
   };
 
   const onCheckboxChange = (evt) => {
-    // 🔥 STEP 8- IMPLEMENT!
+    //
     // a) pull the `name` of the checkbox from the event
-    const { name } = evt.target;
+    const { terms } = evt.target;
     // b) pull whether `checked` true or false, from the event
     const { checked } = evt.target;
 
@@ -123,11 +124,11 @@ export default function App() {
       // copy formvalues
       ...formValues,
       // override one thing inside formvalues
-      hobbies: {
+      terms: {
         // copy the current hobbies
-        ...formValues.hobbies,
+        ...formValues.terms,
         // override one of the hobbies
-        [name]: checked, // NOT AN ARRAY
+        [terms]: checked, // NOT AN ARRAY
       },
     });
   };
@@ -171,7 +172,7 @@ export default function App() {
         <h1>Users App</h1>
       </header>
 
-      <UserForm
+      <User
         values={formValues}
         onInputChange={onInputChange}
         onSubmit={onSubmit}
@@ -180,8 +181,8 @@ export default function App() {
         errors={formErrors}
         onCheckboxChange={onCheckboxChange}
       />
-      {/* 
-      {users.map((user) => {
+
+      {/* {users.map((user) => {
         return <User key={
           user.first_name, 
           user.last_name,
