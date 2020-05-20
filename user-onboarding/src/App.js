@@ -7,23 +7,29 @@ import UserForm from "./Form";
 import "./App.css";
 
 const initialFormValues = {
-  ///// TEXT INPUTS /////
-  username: "",
+  ///// TEXT INPUTS, name email password /////
+  first_name: "",
+  last_name: "",
   email: "",
-  ///// DROPDOWN /////
-  occupation: "",
+  password: "",
 
-  ///// CHECKBOXES /////
+
+  ///// DROPDOWN (stretch)/////
+  age: "",
+
+  ///// CHECKBOX for terms /////
   terms: {
     Accept: false,
     Reject: false,
   },
 };
 const initialFormErrors = {
-  username: "",
+  first_name: "",
+  last_name: "",
   email: "",
-  role: "",
-  civil: "",
+  password: "",
+  age: "",
+  terms: "",
 };
 const initialUsers = [];
 const initialDisabled = true;
@@ -37,27 +43,27 @@ export default function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
   //////////////// HELPERS ////////////////
-  const getFriends = () => {
-    // 🔥 STEP 6- IMPLEMENT! ON SUCCESS PUT FRIENDS IN STATE
-    //    helper to [GET] all friends from `http://localhost:4000/friends`
+  const getUsers = () => {
+    //  ON SUCCESS PUT User IN STATE
+    //     axios.get  from `https://reqres.in/api/users`
     axios
-      .get("http://localhost:4000/friends")
+      .get("https://reqres.in/api/users")
       .then((res) => {
-        setFriends(res.data);
+        setUsers(res.data);
       })
       .catch((err) => {
-        debugger;
+        // debugger;
       });
   };
 
-  const postNewFriend = (newFriend) => {
-    // 🔥 STEP 7- IMPLEMENT! ON SUCCESS ADD NEWLY CREATED FRIEND TO STATE
-    //    helper to [POST] `newFriend` to `http://localhost:4000/friends`
+  const postNewUser = (newUser) => {
+    // ON SUCCESS ADD NEWLY CREATED FRIEND TO STATE
+    //    helper to POST `newFriend` to `https://reqres.in/api/users`
     //    and regardless of success or failure, the form should reset
     axios
-      .post("http://localhost:4000/friends", newFriend)
+      .post("https://reqres.in/api/users", newUser)
       .then((res) => {
-        setFriends([res.data, ...friends]);
+        setUsers([res.data, ...users]);
         // getFriends() // the price of triggering a new 'getFriends`
       })
       .catch((err) => {
@@ -127,10 +133,10 @@ export default function App() {
   const onSubmit = (evt) => {
     evt.preventDefault();
 
-    const newFriend = {
+    const newUser = {
       username: formValues.username.trim(),
       email: formValues.email.trim(),
-      role: formValues.role,
+      role: formValues.,
       civil: formValues.civil,
       // 🔥 STEP 9- WHAT ABOUT HOBBIES?
       hobbies: Object.keys(formValues.hobbies).filter(

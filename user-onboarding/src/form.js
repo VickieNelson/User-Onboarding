@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 
-const userAttrs = {};
-
 export default function UserForm(props) {
   /* create obj props and variables */
   //name, email password, terms of service checkbox, submit button **add a dropdown as a stretch goal
