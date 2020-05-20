@@ -23,10 +23,12 @@ export default function UserForm(props) {
         <button disabled={disabled}>Join!</button>
         <div className='errors'>
           {/*  RENDER VALIDATION ERRORS HERE */}
-          <div>{errors.username}</div>
+          <div>{errors.first_name}</div>
+          <div>{errors.lase_name}</div>
           <div>{errors.email}</div>
-          <div>{errors.role}</div>
-          <div>{errors.civil}</div>
+          <div>{errors.password}</div>
+          <div>{errors.age}</div>
+          <div>{errors.terms}</div>
         </div>{" "}
         {/* this closes div class errors */}
       </div>{" "}

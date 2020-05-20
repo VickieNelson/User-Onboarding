@@ -1,9 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import formSchema from "./formSchema";
+import * as yup from "yup";
 
 // import logo from './logo.svg';
 import UserForm from "./Form";
+import User from "./User";
 import "./App.css";
 
 const initialFormValues = {
@@ -12,7 +15,6 @@ const initialFormValues = {
   last_name: "",
   email: "",
   password: "",
-
 
   ///// DROPDOWN (stretch)/////
   age: "",
@@ -134,24 +136,26 @@ export default function App() {
     evt.preventDefault();
 
     const newUser = {
-      username: formValues.username.trim(),
+      first_name: formValues.first_name.trim(),
+      last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
-      role: formValues.,
-      civil: formValues.civil,
-      // 🔥 STEP 9- WHAT ABOUT HOBBIES?
-      hobbies: Object.keys(formValues.hobbies).filter(
-        (hobbie) => formValues.hobbies[hobbie] === true
+      passwor: formValues.password.trim(),
+      age: formValues.age,
+
+      // terms??????
+      terms: Object.keys(formValues.terms).filter(
+        (term) => formValues.terms[term] === true
       ),
     };
-    // 🔥 STEP 10- POST NEW FRIEND USING HELPER
-    postNewFriend(newFriend);
+    //POST NEW user
+    postNewUser(newUser);
   };
 
   //////////////// SIDE EFFECTS ////////////////
   //////////////// SIDE EFFECTS ////////////////
   //////////////// SIDE EFFECTS ////////////////
   useEffect(() => {
-    getFriends();
+    getUsers();
   }, []);
 
   useEffect(() => {
@@ -164,22 +168,29 @@ export default function App() {
   return (
     <div className='container'>
       <header>
-        <h1>Friends App</h1>
+        <h1>Users App</h1>
       </header>
 
-      <FriendForm
+      <UserForm
         values={formValues}
         onInputChange={onInputChange}
         onSubmit={onSubmit}
-        // 🔥🔥🔥 ADDITIONAL PROPS NEEDED 🔥🔥🔥
+        //  ADDITIONAL PROPS
         disabled={disabled}
         errors={formErrors}
         onCheckboxChange={onCheckboxChange}
       />
-
-      {friends.map((friend) => {
-        return <Friend key={friend.id} details={friend} />;
-      })}
+      {/* 
+      {users.map((user) => {
+        return <User key={
+          user.first_name, 
+          user.last_name,
+          user.email,
+          user.password,
+          user.age,
+          user.terms,
+      } details={user} />;
+      })} */}
     </div>
   );
 }
