@@ -1,21 +1,53 @@
-/* STEP 1 We want to create a form to onboard a new user to our system. We need at least the following pieces of information about our new user:
+import React, { useEffect } from "react";
 
-Name
-Email
-Password
-Terms of Service (checkbox)
-A Submit button to send our form data to the server.
-*/
+function UserForm() {
+  /* create obj props and variables */
+//name, email password, terms of service checkbox, submit button **add a dropdown as a stretch goal
 
-/* STEP 2 implement form validation
+  return (
+    <form className = "form-container">
+      {/*what does the form container need? 
+      what is the jsx? what types of inputs? what are the default validation errors
+      */}
 
+<div className='form-submit'>
+        <h2>Get started today!</h2>
+
+        {/* 🔥 DISABLE THE BUTTON */}
+        <button disabled={disabled}>Join!</button>
+
+        <div className='errors'>
+          {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
+          <div>{errors.username}</div>
+          <div>{errors.email}</div>
+          <div>{errors.role}</div>
+          <div>{errors.civil}</div>
+        </div> {/* this closes div class errors */}
+      </div> {/* this closes form-submit  */}
+
+      <div className='form-inputs'>
+        <h4>General information</h4>
+
+
+        
+      <div/> {/* this closes form-inputs */}
+    <form/> {/* this closes form */}
+  );
+
+  
+}
+
+export default UserForm;
+
+
+
+{/* STEP 2 implement form validation
 
     Using Yup, set up at least two different validations along with custom error messages that will display on screen when validation fails.
+*/}
 
 
-*/
-
-/* STEP 3 make post request
+{/* STEP 3 make post request
 
     >> Craft a POST request using axios that sends your form data to the following endpoint: https://reqres.in/api/users
     
@@ -23,9 +55,9 @@ A Submit button to send our form data to the server.
 
 (Note: For those that are curious, we're using reqres.in for this assignment's API. It's a free API that allows us to simulate a POST request for any data that we send it. Pretty awesome!)
 
-*/
+*/}
 
-/*
+{/*
 STEP 4 display returned data to screen
 
     >> Set up a state property called users that is initialized with an empty array
@@ -33,21 +65,8 @@ STEP 4 display returned data to screen
     >> Every time you make a POST request, and get that new user data back, update your users state with the new user added to the array
     
     >> Render users in your app. You can use the html pre tag and JSON.stringify() method to display your post request.
+*/}
 
 
 
-*/
 
-/*
-STRETCH
-
-    >> Add basic styling to your form in your app. Make it look pretty with any styling method you choose.
-    
-    >> Implement a dropdown menu in your form. Add a role value to your state and add a dropdown with different roles for your users.
-    
-    >> Create 3 new inputs inside your form of your choice along with corresponding validation and error messaging
-    
-    >> Add to your existing handling so that, if a user inputs their email as waffle@syrup.com, they receive an error message in their form that says "That email is already taken."
-
-
-*/
