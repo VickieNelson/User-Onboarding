@@ -32,3 +32,17 @@ describe("Form inputs", () => {
     cy.get(".terms input").should("not.be.disabled");
   });
 });
+
+//validation if field is empty
+
+describe("Form validation", () => {
+  it("validates if form is empty", () => {
+    // need to navigate to site again first
+    // assert that there are no validation error to start with
+    // type a single char in the username input
+    // assert there IS a validation error
+    cy.visit("http://localhost:3000");
+
+    cy.get(".input").invoke("val").should("contain", "");
+  });
+});
