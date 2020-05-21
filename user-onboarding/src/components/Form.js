@@ -44,7 +44,7 @@ const Form = () => {
     formSchema.isValid(formState).then((valid) => {
       setButtonDisabled(!valid);
     });
-  }, [formState]);
+  });
 
   const validateChange = (e) => {
     yup
@@ -101,6 +101,7 @@ const Form = () => {
         <label htmlFor='name'>
           Name
           <input
+            className='input'
             type='text'
             id='name'
             name='name'
@@ -114,6 +115,7 @@ const Form = () => {
         <label htmlFor='email'>
           Email
           <input
+            className='input'
             type='email'
             id='email'
             name='email'
@@ -128,6 +130,7 @@ const Form = () => {
         <label htmlFor='password'>
           Password
           <input
+            className='input'
             type='password'
             id='password'
             name='password'
@@ -157,8 +160,7 @@ const Form = () => {
           />
           Terms & Conditions
         </label>
-        <pre>{JSON.stringify(post, null, 2)}</pre>
-        <button disabled={buttonDisabled} type='submit'>
+        <button className='button' disabled={buttonDisabled} type='submit'>
           Submit
         </button>
       </form>
