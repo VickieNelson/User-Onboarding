@@ -18,4 +18,17 @@ describe("Form inputs", () => {
       .type("vickie@vickie.com")
       .should("have.value", "vickie@vickie.com");
   });
+  it("can select a role", () => {
+    cy.get('select[name="role"]')
+      .select("Student")
+      .should("have.value", "student");
+  });
+
+  it("submit button not disabled any more", () => {
+    cy.get("button.submit").should("not.be.disabled");
+  });
+
+  it("checkbox can be checked", () => {
+    cy.get(".terms input").should("not.be.disabled");
+  });
 });
